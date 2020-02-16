@@ -133,4 +133,5 @@ grafo-referencias/dados/*
 *.gdf
 *.json
 grafo-referencias/.lendoArquivo.py.un~
-*.py~
+*.*~
+*.tsv
