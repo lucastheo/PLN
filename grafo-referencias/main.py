@@ -83,6 +83,24 @@ def gerandoGrafoGDF(var:dict):
     arq.write( s )
     arq.close()
 
+    #-Contando-a-quantidade de-referencias
+    contagemDeCitacao = dict()
+    for idAutorChave in relacao.keys():
+        for idAutorCitado in relacao[ idAutorChave ]:
+            if idAutorCitado not in contagemDeCitacao:
+                contagemDeCitacao[ idAutorCitado  ] = 1
+            else:
+                contagemDeCitacao[ idAutorCitado ] += 1
+    
+    s = "Nome, Citado_quantas_vezes\n"
+
+    for i in contagemDeCitacao:
+        s += f"{autores[i]}\t{contagemDeCitacao[ i  ]}\n"
+
+    arq = open("./contagem.tsv", "w")
+    arq.write( s )
+    arq.close()
+
     
 if __name__ == "__main__":
     print("Gerando dados...")
