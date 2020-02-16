@@ -6,6 +6,8 @@ import re
 import sys
 from tqdm import tqdm
 
+import stopWords
+
 REGEX_PALAVRAS = r"['a-zA-ZÀ-ÖØ-öø-ÿ0-9]+"
 
 #carrega o arquivo
@@ -29,7 +31,8 @@ def percorreArquivos( var:json):
 
                 apo1 = pegaTodasAsPalavras( conjunto )
                 apo2 = lematizacaoDaListaTexto( apo1 )
-                estrutura[strArq].append( apo2 )
+                apo3 = removendoStopsWords( apo2 )
+                estrutura[strArq].append( apo3 )
     return estrutura
 
 def cortaPeloPonto( string:str)->list:
@@ -44,7 +47,13 @@ def lematizacaoDaListaTexto( var:list )->list:
     objWl = WordList( var  )
     return objWl.lemmatize()
 
+def removendoStopsWords( var:list):
+    apoList = list()
 
+    for ele in var:
+        if ele not in stopWords.ENGLISH:
+            apoList.append( ele )
+    return apoList
 
 
 
