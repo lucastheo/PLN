@@ -6,7 +6,7 @@ import re
 import sys
 from tqdm import tqdm
 
-import stopWords
+from util import StopWords
 
 REGEX_PALAVRAS = r"['a-zA-ZÀ-ÖØ-öø-ÿ0-9]+"
 
@@ -51,7 +51,7 @@ def removendoStopsWords( var:list):
     apoList = list()
 
     for ele in var:
-        if ele not in stopWords.ENGLISH:
+        if ele not in StopWords.ENGLISH:
             apoList.append( ele )
     return apoList
 
