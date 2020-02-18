@@ -135,3 +135,4 @@ grafo-referencias/dados/*
 grafo-referencias/.lendoArquivo.py.un~
 *.*~
 *.tsv
+grafo-bigrama/dados/
